@@ -73,7 +73,7 @@ async function startServer() {
 
 
   const host = process.env.HOST || '0.0.0.0';
-  const port = parseInt(process.env.DB_PORT || "5432")
+  const port = parseInt(process.env.PORT || "4000")
   app.listen(port , host , () => {
     console.log("server is running !!!");
   });
