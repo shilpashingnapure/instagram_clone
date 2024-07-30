@@ -19,7 +19,7 @@ export const Register = () => {
 
   async function register(e) {
     e.preventDefault();
-
+    setLoading(true);
     const { isValidate, newErrors } = validate({
       email,
       fullname,
@@ -130,7 +130,7 @@ export const Register = () => {
         <p>
           Have an account?
           <span className="text-blue-500 font-bold">
-            <Link to="/login"> login in</Link>
+            <Link to="/login"> log in</Link>
           </span>
         </p>
       </div>
