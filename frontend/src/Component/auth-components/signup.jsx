@@ -130,7 +130,7 @@ export const Register = () => {
         <p>
           Have an account?
           <span className="text-blue-500 font-bold">
-            <Link to="/login"> Sign up</Link>
+            <Link to="/login"> login in</Link>
           </span>
         </p>
       </div>
