@@ -72,7 +72,7 @@ async function startServer() {
   app.post("/like", authenticate, likePostHandler);
 
 
-  const port = 8000;
+  const port = process.env.PORT || 4000;
   app.listen(port , () => {
     console.log("server is running !!!");
   });
