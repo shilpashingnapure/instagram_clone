@@ -32,11 +32,7 @@ async function startServer() {
   await AppDataSource.initialize();
 
   const app = express();
-  app.use(
-    cors({
-      origin: allowedOrigins,
-    })
-  );
+  app.use(cors());
   app.use(cookieParser());
   app.use(express.json());
 
