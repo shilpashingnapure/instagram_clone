@@ -17,10 +17,16 @@ import {
   deletePostHandler,
   getAllFeedsHandler,
 } from "./controllers/post.controller";
-import { createCommentHandler, deleteCommentHandler } from "./controllers/comment.controller";
+import {
+  createCommentHandler,
+  deleteCommentHandler,
+} from "./controllers/comment.controller";
 import { likePostHandler } from "./controllers/like.controller";
 
-const allowedOrigins = ["http://localhost:3000" , "https://photo-grammm.vercel.app" , "http://photo-grammm.vercel.app"]
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://photo-grammm.vercel.app",
+];
 
 async function startServer() {
   await AppDataSource.initialize();
@@ -28,9 +34,7 @@ async function startServer() {
   const app = express();
   app.use(
     cors({
-      origin: 'https://photo-grammm.vercel.app',
-      credentials: true, // Allow cookies to be sent
-      
+      origin: allowedOrigins,
     })
   );
   app.use(cookieParser());
@@ -54,8 +58,6 @@ async function startServer() {
 
   app.get("/search", searchForUsers);
 
-
-
   // ***************************** post API's *********************************
   app.get("/feeds", authenticate, getAllFeedsHandler);
 
@@ -63,20 +65,15 @@ async function startServer() {
 
   app.delete("/post/:id", authenticate, deletePostHandler);
 
-
-
   // ***************************** comments API's *********************************
   app.post("/comment", authenticate, createCommentHandler);
-  app.delete("/comment/:id" , authenticate , deleteCommentHandler)
-
-
+  app.delete("/comment/:id", authenticate, deleteCommentHandler);
 
   // ***************************** like  API's *********************************
   app.post("/like", authenticate, likePostHandler);
 
-
   const port = process.env.PORT || 4000;
-  app.listen(port , () => {
+  app.listen(port, () => {
     console.log("server is running !!!");
   });
 }

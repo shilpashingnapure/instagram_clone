@@ -1,10 +1,19 @@
-export const baseURL = process.env.NODE_ENV == 'production' ? 'https://instagram-clone-pocc.onrender.com' : 'http://localhost:8000';
+import Cookies from "js-cookie";
+
+
+export const baseURL = process.env.NODE_ENV === 'production' ? 'https://instagram-clone-pocc.onrender.com' : 'http://localhost:4000';
+
+
+const getToken = () => Cookies.get("token");
 
 export async function methodGet(endpoint) {
+  const token = getToken();
   try {
     const res = await fetch(baseURL + endpoint, {
-      method: "GET",
-      credentials: "include",
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
     });
 
     const data = await res.json();
@@ -15,13 +24,14 @@ export async function methodGet(endpoint) {
 }
 
 export async function methodPost(endpoint, body) {
+  const token = getToken();
   try {
     const res = await fetch(baseURL + endpoint, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-type": "application/json",
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${token}`,
       },
-      credentials: "include",
       body: JSON.stringify(body),
     });
 
@@ -34,13 +44,14 @@ export async function methodPost(endpoint, body) {
 
 
 export async function methodPatch(endpoint , body){
+  const token = getToken();
   try {
     const res = await fetch(baseURL + endpoint , {
-      method : "PATCH" ,
+      method : 'PATCH' ,
       headers : {
-        "Content-type" : "application/json"
+        'Content-type' : 'application/json',
+        'Authorization': `Bearer ${token}`,
       },
-      credentials : "include" ,
       body : JSON.stringify(body)
     })
 
@@ -52,10 +63,13 @@ export async function methodPatch(endpoint , body){
 }
 
 export async function methodGetById(endpoint) {
+  const token = getToken();
   try {
     const res = await fetch(baseURL + endpoint, {
-      method: "GET",
-      credentials: "include",
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
     });
     const data = await res.json();
     return { res, data };
@@ -66,10 +80,13 @@ export async function methodGetById(endpoint) {
 
 
 export async function methodDelete(endpoint){
+  const token = Cookies.get("token");
   try {
     const  res = await fetch(baseURL + endpoint , {
       method : 'DELETE' ,
-      credentials : "include"
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
     })
     const data = await res.json();
     return { res , data };
