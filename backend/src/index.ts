@@ -20,6 +20,8 @@ import {
 import { createCommentHandler, deleteCommentHandler } from "./controllers/comment.controller";
 import { likePostHandler } from "./controllers/like.controller";
 
+const allowedOrigins = ["http://localhost:3000" , "https://photo-grammm.vercel.app" , "http://photo-grammm.vercel.app"]
+
 async function startServer() {
   await AppDataSource.initialize();
 
@@ -27,7 +29,13 @@ async function startServer() {
   app.use(
     cors({
       credentials: true, // Allow cookies to be sent
-      origin: ["http://localhost:3000" , "https://photo-grammm.vercel.app"],
+      origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+      },
     })
   );
   app.use(cookieParser());
