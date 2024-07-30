@@ -22,14 +22,7 @@ export const userRegister = async (req: Request, res: Response) => {
     if (isExisting) {
       return res.status(400).json({ message });
     }
-
-    // Set the token as a cookie
-    res.cookie("token", token, {
-      httpOnly: true, // Prevents JavaScript access to the cookie
-      secure: process.env.NODE_ENV === "production", // Send only over HTTPS in production
-      sameSite: "none", // Required for cross-origin requests
-      maxAge: 3600000, // Cookie expiration time in milliseconds (1 hour)
-    });
+    
     return res.status(201).json({ message, token });
   } catch (error) {
     return res.status(500).json({ message: "Internal server error" });
@@ -46,14 +39,6 @@ export const userLogin = async (req: Request, res: Response) => {
     if (!isValid) {
       return res.status(401).json({ message });
     }
-
-    res.cookie("token", token, {
-      httpOnly: true, // Prevents JavaScript access to the cookie
-      secure: process.env.NODE_ENV === "production", // Send only over HTTPS in production
-      sameSite: "none", // Required for cross-origin requests
-      maxAge: 3600000, // Cookie expiration time in milliseconds (1 hour)
-    });
-
     return res.status(200).json({ message, token });
   } catch (error) {
     return res.status(500).json({ message: "Internal server error" });

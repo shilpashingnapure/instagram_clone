@@ -36,7 +36,7 @@ export const Register = () => {
     const { res, data } = await methodPost("/register", user);
 
     if (res.ok) {
-      // Cookies.set("token", data.token , { expires: 7, secure: true, sameSite: 'None' , path: '/'  });
+      Cookies.set("token", data.token , { expires: 7, secure: true, sameSite: 'none' , path: '/'  });
       setLoading(false);
       setTimeout(() => {
         // navigate to home page
