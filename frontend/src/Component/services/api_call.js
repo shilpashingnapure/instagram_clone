@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:4000";
+export const baseURL = process.env.NODE_ENV == 'production' ? 'https://google-calendar-api.onrender.com' : 'http://localhost:8000';
 
 export async function methodGet(endpoint) {
   try {
