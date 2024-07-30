@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 export const Home = () => {
   const { user } = useSelector((state) => state.user);
-  console.log(user);
   return (
     <div className="flex">
       {/* feeds list */}
