@@ -1,0 +1,195 @@
+// ############################## Errors get #############################################
+/*
+  1. TypeError -> unknow file extension '.ts' => 
+    solution => { removed type=module from package.json , tsconfig =. common.js }
+
+  2. while connecting to db givimg typeorm error => 
+    solution => { used new DataSource instead of createConnect function}
+
+  3. TSError -> type 'string' is not assignable to type 'number' when I used env. values to set for db => 
+    solution => { install types/dotenv for env variables and convert port to parseint }
+
+  4. had problem with how should I write struture to store data => (I did follow)
+     1. In entity class add contrutor 
+     2. create file as service and added function => 
+        { 
+        // e.g.
+        // createUser is function inside that get repos 
+
+        function createUser(name , password){
+           const userRepo = AppDataSource.getRepository(User)
+           const newUser = new User(name , email , password)
+           userRepo.save(newUser);
+        }
+     }
+
+ 5. QueryFailedError : column 'user_id' of relation 'post' contains null values 
+   [The QueryFailedError you're encountering indicates that TypeORM is trying to insert or update a Post entity into your PostgreSQL database, but the user_id column is being sent as null, which violates a NOT NULL constraint defined on that column in your database schema.] 
+
+
+ 6. type 'string' had no properties in commpn with type 'FindOneOptions<User>' 
+    solution -> repo.findOne({ where : { id : user , relations : ['posts' ]} })
+
+ 7. correction -> only post and media will be having relations ship -> based on user_id only we will be fetch posts with media
+
+ 8. parameters: undefined,
+   driverError: error: column "user_id" of relation "post" contains null values => when we change database schema and data is present (old data) then this error occurs
+
+ 9. TypeORMError: Entity metadata for Post#like was not found. Check if you specified a correct entity object and if it's connected in the connection options
+     1. enitity i have not added into datasource (db)
+*/
+
+
+
+// ################################################# problem Faced #########################################################
+
+/*
+-------------------------------- problem 1 --------------------------------------------------
+ ## problem raise while doing setp up with typescript and database connection postgreSQL
+
+   # proper steps
+        1. install all depedancy related typescript -> [@types/node , ts-node , typescript , @types/express]
+        2. install -> [express , pg , reflect-metadata , typeorm]
+        3. create tsconfig.json(all related ts config) & ormconfig.json(all related db config and all)
+        4. in index.js create connection to database using appdatasource from typeOrm
+        5. create files e.g user -> create enitity file , create user service file 
+        6. for generate uuid -> install uuid libary
+        7. in primarygeneratedColumn add uuid , and for unique add into Column decotore true.
+ 
+
+-------------------------------- problem 2 -------------------------------------------------
+ ## how to make one column optional 
+    solution -> in column decorator add
+        @Column({ nullable : true })
+        photo? : string
+
+
+
+
+-------------------------------- problem 3 -------------------------------------------------
+ ## ( media associate with post )
+
+    1. entity relationships in typeORM
+    2. In Post -> OneToMany :
+        1. one-to-many relationship between 'Post' & 'Media' entities
+        2. `() => Media` -> specifies the target entity
+        3. media => media.post -> specifies th inverse side of the relationship (property on media that maps back to post)
+        4. { cascade : true } -> enables cascading operations (e.g. saving and deleting from 'Post' to its associated 'Media' entities)
+
+    3. In Media -> ManyToOne :
+        1. () => Post -> specifies the target entity 'Post'
+        2. post => post.media -> specifies the property on 'Post' entity that maps back to 'Media'
+        3. This that each 'Media' entity belongs to a single 'Post' entity
+
+
+
+-------------------------------- problem 4 ---------------------------------------------------
+## how can fetch post based on user (media associate with each post)
+
+1. in post entity make relation one-to-many with media
+2. in media entity make relation many-to-one with post
+3. and post service based on user_id fetch all posts => postRespo.find( { where : { user_id } , relations : ['media'] })
+
+
+
+-------------------------------- problem 5 ----------------------------------
+1. for user security 
+2. used bcryptjs(hashingn passwords) , jsonwebtoken (generate JWTs JSON web Tokens)
+
+-------------------------------- problem 6 ----------------------------------------
+## when nested relationship want to populate 
+e.g. relationship : ['media' , 'comment' , 'comment.user' , 'user']
+
+## for fetching the latest one to used order_by -> desc
+
+
+
+
+------------------------ problem 7 -----------------------------
+## error while updating the user with profilephoto in SQL
+
+1. because in column its was not in quotes
+UPDATE public."user"
+SET username='_.shilpa', "profilePhoto"='https://w0.peakpx.com/wallpaper/264/475/HD-wallpaper-profile-pic-girl-profile.jpg'
+WHERE id='041ad387-ea13-4ce9-ad68-08c985373fb0';
+
+
+*/
+
+
+
+--------------------- problem 8 ---------------------
+1. how to update value into db
+2. we can used svae method of repo and Object.assign()
+3. Merge updateData into the user object => Object.assign(user, updateData);
+4. Object.assign => copies the values of all enumerable own properties from one or more source objects to a target object
+
+
+
+
+
+------------------------ problem 9 ------------------
+1. when remove , also need to remove related table of parent table
+2. synchronize : true => it will create schema for you 
+3. if synchronize is false , we have to do migration for schema
+4. we have to mention onDelete: 'CASCADE' in forgorn keys table 
+5. When synchronize is true , it will automatically take 
+    1. e.g. in post (parent) => when it delete , want to remove related table , 
+    2. so in post make cascade true 
+    3. and all related table make onDeleted : "CASCADE"
+
+
+// imporovement 
+//  if media is giving only class media to store into db
+
+
+
+
+
+
+
+
+
+
+
+// ----------------------- steps -------------------------------
+/*
+
+
+1. setup server
+    1. install all depdancy
+    2. connection to db(postgresql)
+2. create entity with relationshilp (one-to-many , many-to-many)
+3. create API for (post , get)
+
+*/
+
+
+
+# when ever you want to populate details from other table , we have to mention the relationship to both table
+
+
+// correction 
+
+1. for fetching the feed API 
+   1. also populate the user details of that post
+
+2. change user schema => added { username , fullname }
+3. for comment establish relationship with comment and user table
+4. added columns of created and updated
+5. store the sperate name first and last for better search or sort 
+
+
+
+**************** how to search for typeorm ***********************
+1. full-text search => to search for text data within one or more text fields of a table
+2. we can used where for simple query but when have complex query we can used QueryBuilder
+
+
+
+
+
+
+
+***************************
+1. always add error handling for all.

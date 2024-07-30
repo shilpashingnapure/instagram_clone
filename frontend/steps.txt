@@ -1,0 +1,72 @@
+1. how to install tailwind
+   - npm install -D tailwindcss postcss autoprefixer
+   - npx tailwindcss init -p
+   - in configure file add paths in content key => ["./src/**/*.{js,jsx,ts,tsx}"]
+   - add into index.csss file this [ @tailwind base; @tailwind components; @tailwind utilities;
+]
+
+
+styled component => when want same css to used for another component 
+tailwind => when small thing need to be done , like flex , margin , padding etc
+css => when custom thing
+
+
+########## aditional #####################
+## show and hide feature
+## set cookies from frontend
+## how to show error in input down (if its email already exist or password is worong or empty feild)
+
+
+
+******* for cookies ( token) ****************
+when cookies want to send , in req add credentials as includes , 
+so in backend its will get cookies instead of passing every time into token every to req
+
+
+
+*********** have problem to make private route **********************
+1. In private route component , isAuthenticated ? <Outlet /> : <NAvigate to='login' />
+2. in routes wrap all private path to privaterout compoent
+
+
+************** navbar for all component ************************
+add navbar into privateroute
+
+
+******************** Image upload problem ********************************************
+1. only want to accept image type -> metion accept='image/*' in input type file 
+2. how we can show image ; when get createOBjectUrl and store that url into variable
+3. filters => 
+4. to store , if filter is there first draw into canvas then used that url
+
+
+
+
+1. textarea resize none 
+
+
+**************************** input search *********************************
+1. smooth behavior is not happing in input because in focus i have metion the width but in inital it not metioned 
+2. show div result onfoucs only
+   1. we have to handle both onFoucs and onBlue events for this.
+
+
+
+******************** custom file upload ******************
+1. 
+
+
+
+************************ debouncing for search and post like ***************************
+1. useCallback => helps optimize performance by memoizing functions , ensuring ther are not recreated on every render.
+
+
+
+******* .env **********
+1. when ever we want to user .env we have to put REACT_APP_ prefix to every .env variable.
+
+
+
+
+************ got to konw while learning ***************
+1. we can return null to aviod rendering to component

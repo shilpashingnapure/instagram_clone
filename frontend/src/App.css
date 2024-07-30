@@ -1,0 +1,43 @@
+:root{
+  --primary-background : #0196f4;
+  --secondary-background:'';
+  --secondary-color:#737373;
+  --border-color:#dbdbdb;
+  --mute-color : rgba(0 ,0 ,0 , .6);
+}
+
+
+
+textarea{
+  resize : none;
+}
+
+input:focus , textarea:focus{
+  outline: none;
+}
+
+.icons{
+  width:25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+
+/* tab matrial ui */
+.custom-tabs .MuiTabs-indicator {
+  top: 0;
+  bottom: unset;
+  height: 2px; /* Adjust the height as needed */
+  background-color: #b9b5b5; /* Customize the color */
+}
+
+.custom-tab {
+  text-transform: none;
+  font-weight: 400;
+  font-size: 15px;
+  margin-right: 8px;
+}
+
+.custom-tab.Mui-selected {
+  color: gray !important; /* Customize the selected tab color */
+}

@@ -1,0 +1,45 @@
+/* form input field */
+.label {
+  position: relative;
+  background: #fafafa;
+  padding: 6px;
+  border: 1px solid var(--border-color);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.error-label {
+  border: 1px solid rgb(246, 161, 161);
+}
+
+.readOnly-input{
+  background: rgb(228, 226, 226);
+  cursor: not-allowed;
+}
+.label-text {
+  position: absolute;
+  left: 10px;
+  top: 25%;
+  transition: top 0.3s ease, font-size 0.3s ease;
+  color: var(--secondary-color);
+  width: 100%;
+}
+
+.input-field {
+  padding: 8px 0 0 6px;
+  width: 100%;
+  background-color: inherit;
+}
+
+input:focus {
+  outline: none;
+}
+
+.input-field:focus + .label-text,
+.active-label {
+  top: 2px;
+  font-size: 11px;
+}
+
+
+
