@@ -72,8 +72,9 @@ async function startServer() {
   app.post("/like", authenticate, likePostHandler);
 
 
-
-  app.listen(4000, () => {
+  const host = process.env.HOST || '0.0.0.0';
+  const port = parseInt(process.env.DB_PORT || "5432")
+  app.listen(port , host , () => {
     console.log("server is running !!!");
   });
 }
