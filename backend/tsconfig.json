@@ -6,9 +6,12 @@
       "esModuleInterop": true,
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
-      "outDir": "./dist"
+      "outDir": "./dist",
+      "resolveJsonModule": true,
+      "baseUrl": "./",
+    "typeRoots": ["./node_modules/@types"],
     },
-    "include": ["src/**/*.ts"],
+    "include": ["src/**/*.ts" ,"ormconfig.ts"],
     "exclude": ["node_modules"]
   }
   
