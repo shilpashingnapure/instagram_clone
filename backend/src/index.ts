@@ -28,14 +28,9 @@ async function startServer() {
   const app = express();
   app.use(
     cors({
+      origin: 'https://photo-grammm.vercel.app',
       credentials: true, // Allow cookies to be sent
-      origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-          callback(null, true);
-        } else {
-          callback(new Error('Not allowed by CORS'));
-        }
-      },
+      
     })
   );
   app.use(cookieParser());
