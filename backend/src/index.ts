@@ -27,7 +27,7 @@ async function startServer() {
   app.use(
     cors({
       credentials: true, // Allow cookies to be sent
-      origin: "http://localhost:3000",
+      origin: ["http://localhost:3000" , "https://photogramm.vercel.app"],
     })
   );
   app.use(cookieParser());
