@@ -38,7 +38,7 @@ export const Login = () => {
     const { res, data } = await methodPost("/login", { email, password });
 
     if (res.ok) {
-      Cookies.set("token", data.token , { expires: 7, secure: true, sameSite: 'None' });
+      Cookies.set("token", data.token , { expires: 7, secure: true, sameSite: 'None' , path: '/'  });
 
       setSuccessMessage(data.message);
       setOpen(() => true);
