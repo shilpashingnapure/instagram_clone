@@ -3,20 +3,19 @@
 
 
 ## Description
-
-A project is about to Clone of instagram.
+This project is a clone of Instagram, designed to replicate its core functionalities and user interface
 ### Features
   - sign up / login
   - upload/delete post
   - upload/delete comment
-  - like the post
-  - user profile
+  - like the posts
+  - user profile management
   - search for users
 
 ## Tech Stack
-```
- Node.js, TypeScript, Express, TypeOrm, postgreSQL, React, Tailwind, Redux
-```  
+- Backend : Node.js, TypeScript, Express, TypeOrm , PostgreSQL
+- Frontend : React, Tailwind CSS, Redux
+
 
 ## How to Run the Project locally
 
@@ -33,17 +32,40 @@ A project is about to Clone of instagram.
 ```
 
 #### Step 3 : Run Project locally 
-  - if don't have postgreSQL install , can used docker-compose file.
-      - Add database creditionals
-      - run docker-compose file
+ - Backend
+    - Install Dependencies
+      
+      ```
+        cd backend
+        npm install
+       ```
+    - Set Up Database
+        - if you don't have postgreSQL installed, use the 'docker-compose' file.
+        - Add databse credentials to 'docler-compose.yml'
+        - run the docker container:
+          
+           ```
+            docker-compose up -d
+           ```
+    - Run backend
+        - Start the development server
+          ```
+           npm run dev
+          ```
+       - or build and start the production server
+         ```
+           npm run build
+           npm start
+         ```
 
-   - #### To run backed 
-      - cd backend
-      - `npm install`
-      - `npm run dev or npm run build && npm start`
-    
-  - #### To run fronted
-     - cd frontend
-     - `npm install`
-     - `npm start`
+- Frontend
+    - Install Dependencies
+       ```
+         cd frontend
+         npm install
+       ```
+   - Run frontend
+     ```
+      npm start
+     ```
 
