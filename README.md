@@ -32,7 +32,7 @@ A project is about to Clone of instagram.
   cd instagram_clone
 ```
 
-#### Step 3 : Run Project 
+#### Step 3 : Run Project locally 
   - if don't have postgreSQL install , can used docker-compose file.
       - Add database creditionals
       - run docker-compose file
