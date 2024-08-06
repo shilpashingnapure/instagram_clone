@@ -16,6 +16,7 @@ This project is a clone of Instagram, designed to replicate its core functionali
   - follow/unfollow others users
   - stories and reels uploading
   - show feed based following users
+  - upload vidoes/multiple posts
 
 ## Tech Stack
 - Backend : Node.js, TypeScript, Express, TypeOrm , PostgreSQL
