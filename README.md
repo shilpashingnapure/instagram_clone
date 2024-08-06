@@ -12,6 +12,11 @@ This project is a clone of Instagram, designed to replicate its core functionali
   - user profile management
   - search for users
 
+### Future goal
+  - follow/unfollow others users
+  - stories and reels uploading
+  - show feed based following users
+
 ## Tech Stack
 - Backend : Node.js, TypeScript, Express, TypeOrm , PostgreSQL
 - Frontend : React, Tailwind CSS, Redux
