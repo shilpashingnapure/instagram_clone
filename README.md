@@ -5,22 +5,6 @@
 ## Description
 This project is a clone of Instagram, designed to replicate its core functionalities and user interface
 
-## functional Requirement
-- Create and lists photo (can be crop when create)
-- Create and lists Reels (optional)
-- While upload edit by filters
-- Story upload and lists others stories (optional)
-- Likes / comment to other posts
-- Profile details show and search for user
-
-## High-level Design
-
-
-## Data Model
-```
-
-```
-
 ### Features
   - sign up / login
   - upload/delete post
@@ -28,6 +12,33 @@ This project is a clone of Instagram, designed to replicate its core functionali
   - like the posts
   - user profile management
   - search for users
+
+## High-level Design
+<img width="594" alt="Screenshot 2024-08-07 at 1 45 32 PM" src="https://github.com/user-attachments/assets/d0ca4f99-4b12-4d2d-a42e-e929933bd12a">
+
+
+
+## Data Model
+<img width="1000" alt="Screenshot 2024-08-07 at 1 58 19 PM" src="https://github.com/user-attachments/assets/4db5d211-ab20-44ed-be8b-be0ec8477f46">
+
+   
+## API's 
+[BACKEND API's](https://github.com/shilpashingnapure/instagram_clone/blob/main/backend/backend.md)
+
+
+
+
+## Low-Level Design
+- Use Case Diagram
+
+![Screenshot 2024-08-07 at 1 39 21 PM (2)](https://github.com/user-attachments/assets/3bd86a65-5615-43db-87a4-9dac8e80eb3b)
+
+- Class Diagram
+
+<img width="1000" alt="Screenshot 2024-08-07 at 2 32 08 PM" src="https://github.com/user-attachments/assets/4f7b33ba-ff84-422a-9972-4ef6d1357076">
+
+
+
 
 ### Future goal
   - follow/unfollow others users
@@ -91,4 +102,13 @@ This project is a clone of Instagram, designed to replicate its core functionali
      ```
       npm start
      ```
+  - To run this project, you will need to set up Cloudinary for image uploads. Follow these steps:
+     1. Sign up for a Cloudinary account.
+     2. Get your Cloudinary API credentials (Cloud name, API key, and API secret).
+     3. Create a `.env` file in the root of your project and add the following:
+    ```env
+   REACT_APP_COLUDINARY_URL= 'https://api.cloudinary.com/v1_1/${USER_CLOUND_NAME}/image/upload'
+   REACT_APP_COLUDINARY_UPLOAD_PRESET_POST=your preset name
+  ```
+
 
