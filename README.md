@@ -5,7 +5,7 @@
 ## Description
 This project is a clone of Instagram, designed to replicate its core functionalities and user interface
 
-## Demo creditation to see
+## Demo credentials to see
    - email (demo@gmail.com)
    - password (demo)
 
