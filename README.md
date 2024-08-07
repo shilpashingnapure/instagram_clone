@@ -4,6 +4,23 @@
 
 ## Description
 This project is a clone of Instagram, designed to replicate its core functionalities and user interface
+
+## functional Requirement
+- Create and lists photo (can be crop when create)
+- Create and lists Reels (optional)
+- While upload edit by filters
+- Story upload and lists others stories (optional)
+- Likes / comment to other posts
+- Profile details show and search for user
+
+## High-level Design
+
+
+## Data Model
+```
+
+```
+
 ### Features
   - sign up / login
   - upload/delete post
