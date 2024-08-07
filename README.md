@@ -106,9 +106,9 @@ This project is a clone of Instagram, designed to replicate its core functionali
      1. Sign up for a Cloudinary account.
      2. Get your Cloudinary API credentials (Cloud name, API key, and API secret).
      3. Create a `.env` file in the root of your project and add the following:
-    ```env
-   REACT_APP_COLUDINARY_URL= 'https://api.cloudinary.com/v1_1/${USER_CLOUND_NAME}/image/upload'
-   REACT_APP_COLUDINARY_UPLOAD_PRESET_POST=your preset name
-  ```
+        ```env
+           REACT_APP_COLUDINARY_URL= 'https://api.cloudinary.com/v1_1/${USER_CLOUND_NAME}/image/upload'
+           REACT_APP_COLUDINARY_UPLOAD_PRESET_POST=your preset name
+        ```
 
 
