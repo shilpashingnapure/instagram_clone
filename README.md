@@ -16,9 +16,12 @@ This project is a clone of Instagram, designed to replicate its core functionali
   - user profile management
   - search for users
 
+### Demo video
+https://github.com/user-attachments/assets/d89d2b13-db8f-4aa2-86d6-e08235989529
+
+
 ## High-level Design
 <img width="594" alt="Screenshot 2024-08-07 at 1 45 32 PM" src="https://github.com/user-attachments/assets/d0ca4f99-4b12-4d2d-a42e-e929933bd12a">
-
 
 
 ## Data Model
