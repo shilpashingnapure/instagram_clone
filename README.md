@@ -87,6 +87,17 @@ https://github.com/user-attachments/assets/d89d2b13-db8f-4aa2-86d6-e08235989529
            ```
             docker-compose up -d
            ```
+    - Set up .env for backend
+      ```
+      DB_HOST=db_host
+      DB_PORT=db_port
+      DB_USER=db_user
+      DB_PASSWORD=db_password
+      DB_NAME=db_name
+      JWT_SECRET_KEY=secret_key
+      PORT=4000
+      HOST=localhost
+      ```
     - Run backend
         - Start the development server
           ```
